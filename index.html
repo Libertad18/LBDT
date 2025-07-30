@@ -1,44 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Libertad Mini App</title>
-  <meta charset="utf-8">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f3f4f6;
+      color: #111827;
+      padding: 40px 20px;
       text-align: center;
-      padding: 40px;
-      background: #f4f4f4;
     }
+
     h1 {
-      color: #333;
+      color: #1e3a8a;
+      font-size: 28px;
+      margin-bottom: 20px;
     }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    input {
+      padding: 12px;
+      width: 100%;
+      max-width: 400px;
+      border: 2px solid #60a5fa;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
     button {
-      background: #0088cc;
+      background-color: #2563eb;
       color: white;
+      padding: 14px 30px;
+      font-size: 16px;
       border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #111827;
+        color: #f3f4f6;
+      }
+
+      input {
+        background-color: #1f2937;
+        color: white;
+        border: 2px solid #3b82f6;
+      }
+
+      button {
+        background-color: #3b82f6;
+      }
+
+      button:hover {
+        background-color: #2563eb;
+      }
     }
   </style>
 </head>
- <script> <input type="text" id="wallet" placeholder="Enter your wallet address" />
-<button onclick="submitWallet()">Submit</button>
-
-<script>
-function submitWallet() {
-  const wallet = document.getElementById('wallet').value;
-  alert("Wallet saved: " + wallet);
-  Telegram.WebApp.close();
-}
-</script>
-
 <body>
-  <h1>🔥 Welcome to Libertad Token 🔥</h1>
-  <p>Your decentralized future starts here.</p>
-  <button onclick="Telegram.WebApp.close()">Close App</button>
+  <h1>🔥 Libertad Mini App 🔥</h1>
+  <p>Enter your wallet address to join the revolution.</p>
+
+  <input type="text" id="walletInput" placeholder="0xYourWalletAddressHere" />
+
+  <br/>
+  <button onclick="submitWallet()">Submit</button>
+
+  <script>
+    Telegram.WebApp.ready();
+
+    function submitWallet() {
+      const wallet = document.getElementById('walletInput').value.trim();
+
+      if (!wallet || !wallet.startsWith("0x") || wallet.length < 42) {
+        alert("Please enter a valid wallet address!");
+        return;
+      }
+
+      alert("✅ Wallet submitted: " + wallet);
+
+      // Future: send data to Google Sheet or backend API here
+
+      Telegram.WebApp.close();
+    }
+  </script>
 </body>
 </html>
