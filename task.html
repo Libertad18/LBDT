@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Complete Tasks</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Libertad Tasks</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h2>Complete these tasks</h2>
-    <ul>
-      <li><a href="https://t.me/YOUR_CHANNEL" target="_blank">Join Telegram Channel</a></li>
-      <li><a href="https://twitter.com/YOUR_TWITTER" target="_blank">Follow on Twitter</a></li>
-      <li><a href="https://youtube.com/YOUR_CHANNEL" target="_blank">Subscribe YouTube</a></li>
-    </ul>
-    <button onclick="completeTasks()">Done</button>
+    <div class="card">
+      <h1>✅ Tasks to Complete</h1>
+      <ul class="tasks">
+        <li><a href="https://t.me/YourChannel" target="_blank">📢 Join our Telegram Channel</a></li>
+        <li><a href="https://twitter.com/YourTwitter" target="_blank">🐦 Follow us on Twitter</a></li>
+        <li><a href="https://youtube.com/YourYT" target="_blank">📺 Subscribe to our YouTube</a></li>
+      </ul>
+      <button onclick="confirmTasks()">I’ve Completed All</button>
+    </div>
   </div>
   <script>
-    function completeTasks() {
+    function confirmTasks() {
+      alert("✅ Thank you! You've joined the airdrop.");
       window.location.href = "success.html";
     }
   </script>
