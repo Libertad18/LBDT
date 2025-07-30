@@ -1,20 +1,66 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #111;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   color: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
   text-align: center;
 }
-.container {
-  margin-top: 50px;
-}
-input, button {
-  padding: 10px;
-  margin-top: 15px;
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
   border: none;
-  border-radius: 5px;
+  margin: 15px 0;
+  font-size: 16px;
 }
+
 button {
-  background: #f90;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #00d4ff;
+  font-size: 16px;
   color: #000;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.tasks {
+  list-style: none;
+  padding: 0;
+}
+
+.tasks li {
+  margin: 10px 0;
+}
+
+.tasks a {
+  color: #00ffe7;
+  text-decoration: none;
+  font-weight: bold;
 }
