@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Libertad Mini App</title>
+  <title>Libertad Token Access</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
     * {
       box-sizing: border-box;
@@ -14,96 +14,130 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f3f4f6;
-      color: #111827;
-      padding: 40px 20px;
+      font-family: 'Rubik', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px 25px;
+      width: 100%;
+      max-width: 420px;
       text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(8px);
     }
 
     h1 {
-      color: #1e3a8a;
       font-size: 28px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     p {
-      font-size: 16px;
-      margin-bottom: 30px;
+      font-size: 15px;
+      margin-bottom: 25px;
+      color: #dbeafe;
     }
 
     input {
       padding: 12px;
       width: 100%;
-      max-width: 400px;
-      border: 2px solid #60a5fa;
-      border-radius: 8px;
+      border: none;
+      border-radius: 10px;
       font-size: 16px;
       margin-bottom: 20px;
+      outline: none;
+      background: #f0f9ff;
+      color: #111827;
     }
 
     button {
-      background-color: #2563eb;
-      color: white;
-      padding: 14px 30px;
+      background: #38bdf8;
+      color: #fff;
+      padding: 13px 25px;
       font-size: 16px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: 0.3s ease;
     }
 
     button:hover {
-      background-color: #1d4ed8;
+      background: #0ea5e9;
+    }
+
+    .toast {
+      display: none;
+      margin-top: 15px;
+      padding: 10px 18px;
+      background: #dc2626;
+      color: white;
+      border-radius: 6px;
+      font-size: 14px;
+      animation: fadeInOut 3s forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% {opacity: 0;}
+      10% {opacity: 1;}
+      90% {opacity: 1;}
+      100% {opacity: 0;}
     }
 
     @media (prefers-color-scheme: dark) {
       body {
-        background-color: #111827;
-        color: #f3f4f6;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
       }
-
+      .container {
+        background: rgba(255, 255, 255, 0.08);
+      }
       input {
-        background-color: #1f2937;
+        background: #1e293b;
         color: white;
-        border: 2px solid #3b82f6;
-      }
-
-      button {
-        background-color: #3b82f6;
-      }
-
-      button:hover {
-        background-color: #2563eb;
       }
     }
   </style>
 </head>
 <body>
-  <h1>🔥 Libertad Mini App 🔥</h1>
-  <p>Enter your wallet address to join the revolution.</p>
-
-  <input type="text" id="walletInput" placeholder="0xYourWalletAddressHere" />
-
-  <br/>
-  <button onclick="submitWallet()">Submit</button>
+  <div class="container">
+    <h1>🚀 Libertad Access</h1>
+    <p>Enter your wallet to join the movement.</p>
+    <input type="text" id="walletInput" placeholder="0xYourWalletAddress" />
+    <button onclick="submitWallet()">Continue</button>
+    <div class="toast" id="toast">Invalid wallet address</div>
+  </div>
 
   <script>
     Telegram.WebApp.ready();
 
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.innerText = msg;
+      toast.style.display = "block";
+      setTimeout(() => toast.style.display = "none", 3000);
+    }
+
+    function isValidWallet(address) {
+      return /^0x[a-fA-F0-9]{40}$/.test(address);
+    }
+
     function submitWallet() {
       const wallet = document.getElementById('walletInput').value.trim();
 
-      if (!wallet || !wallet.startsWith("0x") || wallet.length < 42) {
-        alert("Please enter a valid wallet address!");
+      if (!isValidWallet(wallet)) {
+        showToast("Please enter a valid Ethereum wallet.");
         return;
       }
 
-      alert("✅ Wallet submitted: " + wallet);
-
-      // Future: send data to Google Sheet or backend API here
-
-      Telegram.WebApp.close();
+      // Later: send to Google Sheets or backend API here
+      Telegram.WebApp.close(); // clean exit
     }
   </script>
 </body>
