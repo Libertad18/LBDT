@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Libertad Airdrop</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Claim Your LIBERTAD Token</h1>
-    <input type="text" id="wallet" placeholder="Enter your BEP20 Wallet Address" />
-    <button onclick="submitWallet()">Submit</button>
-    <p id="error"></p>
+    <div class="card">
+      <h1>🚀 Libertad Airdrop</h1>
+      <p>Enter your wallet address to begin:</p>
+      <input type="text" id="walletInput" placeholder="0x..." required />
+      <button onclick="submitWallet()">Continue</button>
+    </div>
   </div>
-  <script src="referral.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
